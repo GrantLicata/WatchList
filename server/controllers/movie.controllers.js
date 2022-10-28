@@ -11,7 +11,7 @@ module.exports = {
         })
     },
     getOneMovie:(req,res) => {
-        Movie.findbyId(req.params.id)
+        Movie.findById(req.params.id)
         .then((results) => {
             res.json(results)
         }).catch((err) => {

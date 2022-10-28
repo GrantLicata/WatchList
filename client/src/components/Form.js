@@ -32,8 +32,6 @@ const Form = () => {
             console.log(err)
         })
     }
-
-    // mx-auto gives the effect of centering everything
     
     return (
     <div>

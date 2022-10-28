@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Form from './components/Form';
 import MovieList from './components/MovieList';
 import NavBar from './components/NavBar';
+import OneMovie from './components/OneMovie';
+import EditForm from './components/EditForm';
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Form/>}/>
           <Route path="/movieList" element={<MovieList/>}/>
+          <Route path="/oneMovie/:id" element={<OneMovie/>} />
+          <Route path="/edit/:id" element={<EditForm/>} />
         </Routes>
       </BrowserRouter>
     </div>

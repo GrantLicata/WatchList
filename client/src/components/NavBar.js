@@ -1,24 +1,27 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
+let activeStyle = {
+  color: "cyan"
+}
+
+let inactiveStyle = {
+  color: "white"
+}
+
 const NavBar = () => {
   return (
-
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-sm bg-dark">
       <div class="container-fluid">
         <div class="navbar-nav mx-auto">
-          <a class="navbar-brand" href="#">Movies Database</a>
-          <NavLink to='/movieList' className='nav-link'>Home</NavLink>
-          <NavLink to='/' className='nav-link'>Form</NavLink>
+          <a class="navbar-brand text-warning" href="#"><strong>Movies Database</strong></a>
+          <NavLink to='/movieList' className='nav-link' style={({ isActive }) => 
+            isActive ? activeStyle : inactiveStyle } end>Home</NavLink>
+          <NavLink to='/' className='nav-link' style={({ isActive }) => 
+            isActive ? activeStyle : inactiveStyle } end>Form</NavLink>
         </div>
       </div>
     </nav>
-
-    // <div className="bg-dark col-12 no-gutter fluid">
-    //     <h1 className='text-warning'>Movie DB</h1>
-    //     <NavLink to='/movieList' className='m-3'>Home</NavLink>
-    //     <NavLink to='/' className=''>Form</NavLink>
-    // </div>
   )
 }
 
