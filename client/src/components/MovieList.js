@@ -24,7 +24,7 @@ const MovieList = () => {
             <h1>Movie List</h1>
             {
                 list.map((movie) => (
-                    <div className='col col-4 mt-3'>
+                    <div className='col col-4 mt-3 mx-auto'>
                         <img src={movie.boxArt} className='col-6'/>
                         <h2>{movie.title}</h2>
                     </div>
