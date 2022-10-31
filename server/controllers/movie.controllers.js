@@ -7,7 +7,7 @@ module.exports = {
         .then((results) => {
             res.json(results)
         }).catch((err) => {
-            console.log(err)
+            res.status(400).json(err)
         })
     },
     getOneMovie:(req,res) => {
@@ -15,7 +15,7 @@ module.exports = {
         .then((results) => {
             res.json(results)
         }).catch((err) => {
-            console.log(err)
+            res.status(400).json(err)
         })
     },
     addMovie:(req,res) => {
@@ -23,15 +23,16 @@ module.exports = {
         .then((results) => {
             res.json(results)
         }).catch((err) => {
-            console.log(err)
+            //Error should be handled here differently when validations used in the model.
+            res.status(400).json(err)
         })
     },
     updateMovie:(req,res) => {
-        Movie.updateOne({_id:req.params.id}, req.body)
+        Movie.updateOne({_id:req.params.id}, req.body, {new:true, runValidators: true} )
         .then((results) => {
             res.json(results)
         }).catch((err) => {
-            console.log(err)
+            res.status(400).json(err)
         })
     },
     deleteMovie:(req,res) => {
@@ -39,7 +40,7 @@ module.exports = {
         .then((results) => {
             res.json(results)
         }).catch((err) => {
-            console.log(err)
+            res.status(400).json(err)
         })
     }
 }

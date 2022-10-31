@@ -2,28 +2,48 @@ const mongoose = require('mongoose')
 
 const MovieSchema = new mongoose.Schema({
     title: {
-        type: String
+        type: String,
+        required: [true, "Title is required!"],
+        minLength: [2, "Minimum length is 2"],
+        maxLength: [20, "Maximum length is 20"]
     },
     director: {
-        type: String
+        type: String,
+        required: [true, "Director is required!"],
+        minLength: [2, "Minimum length is 2"],
+        maxLength: [20, "Maximum length is 20"]
+
     },
     rating: {
         type: String,
-        enum: ['G', 'PG', 'PG-13', 'R', 'NC-13']
         //Enum gives defined options that the user can select from
+        enum: ['G', 'PG', 'PG-13', 'R', 'NC-13'],
+        required: [true, "Rating is required!"]
+
     },
-    genere: {
+    genre: {
         type: String,
-        enum: ['Comedy','Horror','Drama','Sci-fi','Thriller','Action']
+        enum: ['Comedy','Horror','Drama','Sci-fi','Thriller','Action'],
+        required: [true, "Genre is required!"]
+
     },
-    releasedyear: {
+    releasedYear: {
         type: Number,
+        required: [true, "Released year is required!"],
+        minLength: [2, "Minimum length is 2"],
+        maxLength: [5, "Maximum length is 5"]
+
     },
     duration: {
-        type: String
+        type: String,
+        required: [true, "Duration is required!"],
+        minLength: [2, "Minimum length is 2"],
+        maxLength: [20, "Maximum length is 20"]
     },
     boxArt: {
-        type: String
+        type: String,
+        required: [true, "Box art is required!"]
+
     }
 },{timestamps: true})
 //Options can be added at the end of our schema object. The timestamp object added as an optional here will create an UpdatedAt and CreatedAt along with the _id when new documents are generated in the collection.
