@@ -1,8 +1,11 @@
 const express = require('express')
 const app = express()
 const PORT = 8000
-require('./config/mongoose.config')
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
+require('./config/mongoose.config')
+//.env for authentication
+require('dotenv').config()
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
@@ -14,7 +17,8 @@ app.use(
 )
 
 
-const Routes = require('./routes/movie.routes')(app)
+require('./routes/movie.routes')(app)
+require('./routes/user.routes')(app)
 
 app.listen(PORT, ()=> {
     console.log(`Server is up on port ${PORT}`)
