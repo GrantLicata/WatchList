@@ -9,7 +9,7 @@ const MovieList = () => {
     const [list,setList] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/allMovies')
+        axios.get('http://localhost:8000/api/allMovies',{withCredentials: true, credentials: 'include'})
         .then((res) => {
             console.log(res)
             setList(res.data)
@@ -22,8 +22,8 @@ const MovieList = () => {
         <div>
             <h1>Movie List</h1>
             {
-                list.map((movie) => (
-                    <div className='col col-4 mt-3 mx-auto'>
+                list.map((movie,index) => (
+                    <div key={index} className='col col-4 mt-3 mx-auto'>
                         <img src={movie.boxArt} className='col-6'/><br/>
                         <Link to={`/oneMovie/${movie._id}`}>{movie.title}</Link>
                     </div>
